@@ -79,7 +79,7 @@ class UploadClipMixin:
         configure_timeout: int = 10,
         feed_show: str = "1",
         extra_data: Dict[str, str] = {},
-    ) -> Media:
+    ) -> str:
         """
         Upload CLIP to Instagram
 
@@ -194,7 +194,7 @@ class UploadClipMixin:
                 if configured:
                     media = self.last_json.get("media")
                     self.expose()
-                    return extract_media_v1(media)
+                    return upload_id
         raise ClipConfigureError(response=self.last_response, **self.last_json)
 
     def clip_upload_as_reel_with_music(
