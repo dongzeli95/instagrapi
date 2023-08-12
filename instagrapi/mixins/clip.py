@@ -194,7 +194,7 @@ class UploadClipMixin:
                 if configured:
                     media = self.last_json.get("media")
                     self.expose()
-                    return upload_id
+                    return response.json().get('upload_id')
         raise ClipConfigureError(response=self.last_response, **self.last_json)
 
     def clip_upload_as_reel_with_music(
